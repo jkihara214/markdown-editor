@@ -11,13 +11,25 @@ const StyledButton = styled.button`
   min-width: 5rem;
   padding: 0 1rem;
   cursor: pointer;
+
+  &.cancel {
+    background: white;
+    border: 1px solid gray;
+    color: gray;
+  }
 `;
 
 interface Props {
+  cancel?: boolean;
   children: string;
   onClick: () => void;
 }
 
 export const Button: React.FC<Props> = (props) => (
-  <StyledButton onClick={props.onClick}>{props.children}</StyledButton>
+  <StyledButton
+    onClick={props.onClick}
+    className={props.cancel ? "cancel" : ""}
+  >
+    {props.children}
+  </StyledButton>
 );
